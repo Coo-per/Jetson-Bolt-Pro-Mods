@@ -44,7 +44,7 @@ In this way you will know that the speed hack has FOR SURE been applied.
 1) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
 2) Upload the program your arduino board.
 3) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pins:
-4) 
+
    ARDUINO GND       | --connect to--> | BLACK Wire on Jetson Bolt Pro
    
    ARDUINO DIGITAL 3 | --connect to--> | GREY Wire on Jetson Bolt Pro
