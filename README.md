@@ -10,7 +10,7 @@ He is a nice guy that just wants to help everyone that owns this bike.
 **************
 
 If you have technical know-how and just want to send commands serially yourself. The TLDR is..
-Baud rate: 115200, TX the HEX message: aa06061eb4bb
+Baud rate: 115200, TX the HEX message on the Grey wire: aa06061eb4bb
 
 Otherwise, keep reading.
 
