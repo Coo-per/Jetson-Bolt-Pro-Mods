@@ -77,4 +77,4 @@ This will unlock the protection built into this program which prevent higher tha
 
 In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes Adjustable speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display.
 If you would like to help with that project please help me find the messages from the rx pin! :D
-That project is in Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. Currently only reading messages from A1. But the Jetson  sends messages from A1 A2, A3, A4, A7... possibly others, I havn't looked into it much.
+That project is located in Testing/Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. Currently only reading messages from A1. But the Jetson  sends messages from A1 A2, A3, A4, A7... possibly others, I havn't looked into it much.
