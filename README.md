@@ -5,8 +5,10 @@ If you would like to help with that project please help me find the messages fro
 
 The Speedhack is detailed below.
 
+**************
 Credit and thanks goes to NTWM420 on reddit for letting me meet up with them and tinker with their original Jetson bluetooth module.
 He is a nice guy that just wants to help everyone that owns this bike.
+**************
 
 @@@@@@@@@@@@@@@@@@@@ Disclaimer! @@@@@@@@@@@@@@@@@@@@
 
