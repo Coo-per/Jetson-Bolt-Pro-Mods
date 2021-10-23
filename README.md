@@ -1,6 +1,7 @@
 This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only mod is speedhack. In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes Adjustable speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display
 
 The Speedhack is detailed below. 
+
 @@@@@@@@@@@@@@@@@@@@ Disclaimer! @@@@@@@@@@@@@@@@@@@@
 
 Everything in this program is DO AT YOUR OWN RISK and for educational purposes ONLY.
