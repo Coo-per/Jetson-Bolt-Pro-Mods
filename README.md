@@ -75,6 +75,29 @@ This will unlock the protection built into this program which prevent higher tha
 
 **************
 
+**************
+
+OTHER MODS:
+
+**************
 In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes Adjustable speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display.
 If you would like to help with that project please help me find the messages from the rx pin! :D
-That project is located in Testing/Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. Currently only reading messages from A1. But the Jetson  sends messages from A1 A2, A3, A4, A7... possibly others, I havn't looked into it much.
+That project is located in Testing/Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. Currently only reading messages from A1. But the Jetson sends messages from A1 A2, A3, A4, A7... possibly others, I havn't looked into it much.
+
+The controller constantly transmits 10-Bytes of data. The below is UNCONFIRMED, however it appears to be in this format:
+aa xx yy zz data data data data checksum bb
+1  2  3  4  5    6    7    8    9        10 //Byte #
+-aa: Marks the start of a transmission (CONFIRMED)
+-xx yy zz: is unknown. Appears to be the message type, it specifies what kind of data is in the packet
+-data data data data: the data
+-checksum: The checksum which is an 8-Bit Checksum Xor including the first byte "aa" (CONFIRMED)
+-bb: Marks the end of a transmission (CONFIRMED)
+
+NOTES:
+•Command to switch headlight on/off
+•SPEED:    Appears to be BYTE 5 & 6. When BYTE 6 becomes greater than 0xFF, it rolls over to 0x01 in BYTE 5, continues counting from 0 in BYTE 6... could also be the throttle position. MEDIUM-HIGH CONFIDENCE
+•TEMP:     Appears to be stored in celsius in "A1" byte 8. Also duplicated data in "A7" byte 8. MEDIUM CONFIDENCE.
+•VOLTAGE:  Could be "A1" BYTE 4? | "A4" BYTE 5? | "A7" BYTE 8? | "A2" BYTE 8? | LOW CONFIDENCE.
+•CURRENT:  AMPS
+•ODO:      KM/MI  I think it's in "A2" in either bytes 5, 7, or 8. Probably byte 5 since it starts at 0 - counts up when driving. MEDIUM-HIGH CONFIDENCE
+•RUN TIME: Stored in minutes. Appears to be from "A3" at byte # 8. Starts immediately at 1, ++ each minute. HIGH CONFIDENCE
