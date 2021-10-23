@@ -6,8 +6,26 @@ If you would like to help with that project please help me find the messages fro
 The Speedhack is detailed below.
 
 **************
+
 Credit and thanks goes to NTWM420 on reddit for letting me meet up with them and tinker with their original Jetson bluetooth module.
 He is a nice guy that just wants to help everyone that owns this bike.
+
+**************
+
+If you have technical know-how to send commands serially. The TLDR is..
+Baud rate: 115200, TX the HEX message: aa06061eb4bb
+
+Otherwise, keep reading.
+
+**************
+
+If you're just here for the speed hack download JetsonSpeedHack.ino and follow the instructions inside.
+You will need an arduino, and upload the code JetsonSpeedHack.ino
+
+You CANNOT use the DSD TECH HM-10 from Amazon BY DEFAULT. The default baud rate is 9600 and the only way to activate Baud rate 115200 is to first send it an AT command: AT+BAUD4 via a computer using an arduino or other serial comm device. You can also set AT+MODE2 via an arduino/serial comm and this will let you send AT commands directly from the phone via bluetooth to use the device with less limitation.
+
+You might as well just buy an arduino though and skip the HM-10.
+
 **************
 
 @@@@@@@@@@@@@@@@@@@@ Disclaimer! @@@@@@@@@@@@@@@@@@@@
