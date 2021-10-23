@@ -1,5 +1,7 @@
 This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only mod is speedhack - more to come?
 
+https://www.youtube.com/watch?v=HBDkVcntbl0
+
 **************
 
 Credit and thanks goes to NTWM420 on reddit for letting me meet up with them and tinker with their original Jetson bluetooth module.
