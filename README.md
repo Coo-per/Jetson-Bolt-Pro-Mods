@@ -1,7 +1,4 @@
-This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only mod is speedhack.
-
-In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes Adjustable speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display.
-If you would like to help with that project please help me find the messages from the rx pin! :D
+This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only mod is speedhack - more to come?
 
 **************
 
@@ -10,7 +7,7 @@ He is a nice guy that just wants to help everyone that owns this bike.
 
 **************
 
-If you have technical know-how to send commands serially. The TLDR is..
+If you have technical know-how and just want to send commands serially yourself. The TLDR is..
 Baud rate: 115200, TX the HEX message: aa06061eb4bb
 
 Otherwise, keep reading.
@@ -70,3 +67,9 @@ If you accept these risks:
 To increase speed higher, change TARGET_SPEED_MPH to a value higher than 19. Next change the below from
                          AGREE_TO_TERMS false -> AGREE_TO_TERMS true
 This will unlock the protection built into this program which prevent higher than 19 mph
+
+**************
+
+In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes Adjustable speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display.
+If you would like to help with that project please help me find the messages from the rx pin! :D
+That project is in Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. Currently only reading messages from A1. But the Jetson  sends messages from A1 A2, A3, A4, A7... possibly others, I havn't looked into it much.
