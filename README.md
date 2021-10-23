@@ -84,6 +84,8 @@ In the future if time permits, would like to add a Jetson Bolt Pro speedometer w
 If you would like to help with that project please help me find the messages from the rx pin! :D
 That project is located in Testing/Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. Currently only reading messages from A1. But the Jetson sends messages from A1 A2, A3, A4, A7... possibly others, I havn't looked into it much.
 
+---Below makes no sense without seeing the formatting LOL---
+
 The controller constantly transmits 10-Bytes of data. The below is UNCONFIRMED, however it appears to be in this format:
 aa xx yy zz data data data data checksum bb
 1  2  3  4  5    6    7    8    9        10 //Byte #
