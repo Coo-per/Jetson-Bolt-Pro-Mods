@@ -99,3 +99,8 @@ byte checkSum(byte byteArray[], int arraySize) {
     checksum ^= byteArray[i];
   return checksum;
 }
+
+void loop()
+{
+
+}
