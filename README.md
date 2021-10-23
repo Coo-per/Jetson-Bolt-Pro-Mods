@@ -3,7 +3,11 @@ This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the 
 In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes Adjustable speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display.
 If you would like to help with that project please help me find the messages from the rx pin! :D
 
-The Speedhack is detailed below. 
+The Speedhack is detailed below.
+
+// Credit and thanks goes to NTWM420 on reddit for letting me meet up with them and tinker
+// with their original Jetson bluetooth module.
+// He is a nice guy that just wants to help everyone that owns this bike.
 
 @@@@@@@@@@@@@@@@@@@@ Disclaimer! @@@@@@@@@@@@@@@@@@@@
 
