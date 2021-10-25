@@ -7,7 +7,7 @@ SoftwareSerial mySerial(2, 3); // RX, TX
 
 /*
  * @@@@@@@@@@@@@@@ To find: @@@@@@@@@@@@@@@
- *    •Command to switch headlight on/off
+ *    •Command to switch headlight on/off:  On: AA070601AABB | Off: AA070600ABBB
  *    •MAX SPEED:         a3, byte 4 = KMPH
  *    •CURRENT SPEED:     a1, (byte 5 * 0xff) + byte 6) - Might be in RPM
  *    •TEMPERATURE:       a1, byte 8 AND DUPLICATED IN a7, byte 8 = C
