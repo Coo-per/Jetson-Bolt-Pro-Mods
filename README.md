@@ -99,7 +99,7 @@ aa a# 0a data data data data data checksum bb
 NOTES:
 •Switch headlight on/off: On: AA070601AABB | Off: AA070600ABBB
 •HEADLIGHT STATUS: "A4" BYTE 8. 0x00 = off. 0x10 = on. untested fully.. 100% CONFIRMED.
-•SPEED:    Appears to be BYTE 5 & 6. When BYTE 6 becomes greater than 0xFF, it rolls over to 0x01 in BYTE 5, continues counting from 0 in BYTE 6... Example: Full throttle 30 KMPH = 0x01 0x22 = 34 + 255 = 289. Then apply some math: (289/10) + 1.1 = 30 KMPH. This seems to hold true with full throttle at 5 KMPH = 0x00 0x27 = 0 + 39 = 39. Then apply math: (39/10) + 1.1 = 5 KMPH. Needs more testing with different MAX SPEED settings. MEDIUM-HIGH CONFIDENCE.
+•SPEED:    Appears to be "A1" BYTE 5 & 6. When BYTE 6 becomes greater than 0xFF, it rolls over to 0x01 in BYTE 5, continues counting from 0 in BYTE 6... Example: Full throttle 30 KMPH = 0x01 0x22 = 34 + 255 = 289. Then apply some math: (289/10) + 1.1 = 30 KMPH. This seems to hold true with full throttle at 5 KMPH = 0x00 0x27 = 0 + 39 = 39. Then apply math: (39/10) + 1.1 = 5 KMPH. Needs more testing with different MAX SPEED settings. MEDIUM-HIGH CONFIDENCE.
 •TEMP:     Appears to be stored in celsius in "A1" byte 8. Also duplicated data in "A7" byte 8. MEDIUM-HIGH CONFIDENCE.
 •VOLTAGE:  Could be "A1" BYTE 4? | "A4" BYTE 5? | "A7" BYTE 8? | "A2" BYTE 8? | LOW CONFIDENCE.
 •BATTERY %: Battery % is same as Voltage. Seems like "A1" BYTE 4, which starts at 0x64 (100) when fully charged. Need to see if it drops after driving. -THIS INFO APPEARS TO BE WRONG.
