@@ -49,11 +49,9 @@ Jetson Bolt (Non-Pro) model.
 2) Upload the program your arduino board.
 3) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pins:
 
-   ARDUINO GND       | --connect to--> | BLACK Wire on Jetson Bolt Pro
-   
-   ARDUINO DIGITAL 3 | --connect to--> | GREY Wire on Jetson Bolt Pro
-   
-   ARDUINO 5V        | --connect to--> | ORANGE Wire on Jetson Bolt Pro
+   | ARDUINO GND       | --connect to--> | BLACK Wire on Jetson Bolt Pro  |
+   | ARDUINO DIGITAL 3 | --connect to--> | GREY Wire on Jetson Bolt Pro   |
+   | ARDUINO 5V        | --connect to--> | ORANGE Wire on Jetson Bolt Pro |
    
 4) Connect 36v battery and power the Jetson Bolt Pro ON
 5) The headlight will flash twice indicating Speed hack is complete. For good measure.. while everything is still connected you can press the reset
@@ -85,6 +83,7 @@ This will unlock the protection built into this program which prevent higher tha
 # OTHER MODS:
 
 **************
+
 In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes adjustable max speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display, etc. That project is located in Testing/Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. But the Jetson sends messages from Registers: A1 A2, A3, A4, A7...
 
 The controller constantly transmits 10-Bytes via serial 115200 BAUD.
