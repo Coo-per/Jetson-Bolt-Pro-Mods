@@ -27,6 +27,9 @@ Otherwise, if you didn't understand that keep reading...
 # Speedhack
 
 ### Intro to Speedhack
+
+https://www.youtube.com/watch?v=HBDkVcntbl0
+
 If you're just here for the speed hack download JetsonSpeedHack.ino and follow the instructions below
 
 ###### You will need:
