@@ -28,7 +28,8 @@ Otherwise, if you didn't understand that keep reading...
 
 ### Intro to Speedhack
 If you're just here for the speed hack download JetsonSpeedHack.ino and follow the instructions inside.
-You will need an arduino, and upload the code JetsonSpeedHack.ino
+
+>You will need an arduino, and upload the code JetsonSpeedHack.ino
 
 You CANNOT use the DSD TECH HM-10 from Amazon BY DEFAULT. The default baud rate is 9600 and the only way to activate Baud rate 115200 is to first send it an AT command: AT+BAUD4 via a computer using an arduino or other serial comm device. You can also set AT+MODE2 via an arduino/serial comm and this will let you send AT commands directly from the phone via bluetooth to use the device with less limitation.
 
@@ -38,9 +39,9 @@ You might as well just buy an arduino and skip the HM-10.
 
 ### Disclaimer!:
 
-Everything in this program is DO AT YOUR OWN RISK and for educational purposes ONLY.
-It may not be legal to ride in your city/state/country with the use of a speedhack
+Everything in this program is DO AT YOUR OWN RISK and for educational purposes ONLY. It may not be legal to ride in your city/state/country with the use of a speedhack
 setting higher than factory.
+
 These bikes ship with a speed setting at 15 mph, and using the official Ride Jetson
 app 19 mph is the highest setting. This is considered "Safe" by the community of those
 who have already done this speedhack using the genuine Bluetooth module from the
@@ -86,7 +87,7 @@ To increase speed higher, change TARGET_SPEED_MPH to a value higher than 19. Nex
 
                          AGREE_TO_TERMS false -> AGREE_TO_TERMS true
 
-This will unlock the protection built into this program which prevent higher than 19 mph
+This will unlock the protection built into the Arduino program which prevents running higher than 19 mph (30 kmph, which is really 18.6 mph)
 
 **************
 
