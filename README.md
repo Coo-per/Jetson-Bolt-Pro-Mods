@@ -142,7 +142,7 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 ### Command Format
 
 | Byte # | 1  | 2   | 3      | 4    | ...Data may continue... | Last Byte - 1 | Last Byte |
-| ------ | -- | --- | ------ | ---- | ...Data may continue... | ------------- | --------- |
+| ------ | -- | --- | ------ | ---- | ----------------------- | ------------- | --------- |
 |        | aa | Var | #Bytes | data | ...Data may continue... | checksum      | bb        |
 
 **aa:** Start transmission
