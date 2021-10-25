@@ -91,9 +91,9 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 ### Controller message format
 
-aa a# 0a data data data data data checksum bb
-
-1  2  3  4    5    6    7    8    9        10 //Byte #
+| Byte # | 1  | 2  | 3  | 4    | 5    | 6    | 7    | 8    | 9        | 10 |
+| ------ | -- | -- | -- | ---- | ---- | ---- | ---- | ---- | -------- | -- |
+|        | aa | a# | 0a | data | data | data | data | data | checksum | bb |
 
 **aa:** Start transmission [Always aa]
 
