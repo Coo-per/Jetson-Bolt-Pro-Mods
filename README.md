@@ -27,7 +27,7 @@ You might as well just buy an arduino and skip the HM-10.
 
 **************
 
-Disclaimer!:
+# Disclaimer!:
 
 Everything in this program is DO AT YOUR OWN RISK and for educational purposes ONLY.
 It may not be legal to ride in your city/state/country with the use of a speedhack
@@ -39,7 +39,7 @@ Jetson Bolt (Non-Pro) model.
 
 **************
 
-How to use this program:
+# How to use this program:
 
 1) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
 2) Upload the program your arduino board.
@@ -57,7 +57,7 @@ How to use this program:
 
 **************
 
-TO INCREASE ABOVE 19 MPH, PLEASE READ ALL OF THE BELOW:
+# TO INCREASE ABOVE 19 MPH, PLEASE READ ALL OF THE BELOW:
 
 Per the "Ride Jetson" App for Android, the minimum speed is 3 mph (5 km/h) and the
 maximum speed is 19 mph (30 km/h) [really it's 18.6 mph rounded up since calculation is from km].
@@ -78,7 +78,7 @@ This will unlock the protection built into this program which prevent higher tha
 
 **************
 
-OTHER MODS:
+# OTHER MODS:
 
 **************
 In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes Adjustable speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display.
@@ -99,7 +99,7 @@ aa a# 0a data data data data data checksum bb
 
 **************
 
-NOTES:
+### NOTES:
 
 •Switch headlight on/off: On: AA070601AABB | Off: AA070600ABBB
 
@@ -120,7 +120,7 @@ NOTES:
 •HEADLIGHT STATUS:  a4, byte 8 = 0x00 off, 0x10 on
 
 **************
-MAP:
+### MAP:
 
 ID |  BYTE  4  5  6  7  8
 
