@@ -129,7 +129,25 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 ### NOTES:
 
-**Switch headlight on/off:** On: AA070601AABB | Off: AA070600ABBB
+**Speed:** aa0606YYZZbb - Where YY is the speed in KM and ZZ is the checksum
+
+**Switch headlight on/off:** On: aa070601aabb | Off: aa070600abbb
+
+From this we can gather the commands to change variables of the controller are of format: aaXX06YYZZbb
+
+**aa:** Start transmission
+
+**XX:** Variable to change
+
+**06:** End variable to change
+
+**YY:** New value of variable
+
+**ZZ:** Checksum
+
+**bb:** End transmission
+
+
 
 | Status                |  Byte location                                  |
 | --------------------- | ----------------------------------------------- |
@@ -139,8 +157,8 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 | **MAX SPEED:**        | a3, byte 4 = KMPH                               |
 | **RUN TIME:**         | a3, byte 8 = minutes                            |
 | **HEADLIGHT STATUS:** | a4, byte 8 = 0x00 off, 0x10 on                  |
-| **VOLTAGE:**          | V                                               |
-| **CURRENT:**          | Amps                                            |
+| **VOLTAGE:**          | V - currently unknown                           |
+| **CURRENT:**          | Amps - currently unknown                        |
 
 **************
 ### MAP:
