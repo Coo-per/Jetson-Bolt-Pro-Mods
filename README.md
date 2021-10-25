@@ -27,9 +27,12 @@ Otherwise, if you didn't understand that keep reading...
 # Speedhack
 
 ### Intro to Speedhack
-If you're just here for the speed hack download JetsonSpeedHack.ino and follow the instructions inside.
+If you're just here for the speed hack download JetsonSpeedHack.ino and follow the instructions below
 
->You will need an arduino, and upload the code JetsonSpeedHack.ino
+###### You will need:
+1) An Arduino
+2) Breadboard dupont connectors - to connect the Arduino to Jetson Bolt Pro
+3) The code found in this repo: JetsonSpeedHack.ino
 
 You CANNOT use the DSD TECH HM-10 from Amazon BY DEFAULT. The default baud rate is 9600 and the only way to activate Baud rate 115200 is to first send it an AT command: AT+BAUD4 via a computer using an arduino or other serial comm device. You can also set AT+MODE2 via an arduino/serial comm and this will let you send AT commands directly from the phone via bluetooth to use the device with less limitation.
 
@@ -53,7 +56,7 @@ Jetson Bolt (Non-Pro) model.
 
 1) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
 2) Upload the program your arduino board.
-3) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pins:
+3) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected: Connect the following pins using the breadboard dupont connectors - They fit right into the Jetson connector
 
       | ARDUINO PIN | WIRE             | JETSON BOLT PRO CONNECTOR |
       | ----------- | ---------------  | ------------------------- |
