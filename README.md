@@ -85,21 +85,27 @@ This will unlock the protection built into this program which prevent higher tha
 # OTHER MODS:
 
 **************
-In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes Adjustable speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display.
-If you would like to help with that project please help me find the messages from the rx pin! :D
-That project is located in Testing/Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. Currently only reading messages from A1. But the Jetson sends messages from A1 A2, A3, A4, A7... possibly others, I havn't looked into it much.
+In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes adjustable max speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display, etc. That project is located in Testing/Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. But the Jetson sends messages from Registers: A1 A2, A3, A4, A7...
 
----Below makes no sense without seeing the formatting LOL---
+The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
-The controller constantly transmits 10-Bytes of data. The below is UNCONFIRMED, however it appears to be in this format:
+### Controller message format
+
 aa a# 0a data data data data data checksum bb
+
 1  2  3  4    5    6    7    8    9        10 //Byte #
--aa: Marks the start of a transmission (CONFIRMED)
--a# Appears to be the memory address, it would identify what kind of data is in the packet
--0a always comes after a# ??
--data: the data, Bytes 4-8
--checksum: The checksum which is an 8-Bit Checksum Xor including the first byte "aa" (CONFIRMED)
--bb: Marks the end of a transmission (CONFIRMED)
+
+**aa:** Marks the start of a transmission (CONFIRMED)
+
+**a#:** Appears to be the memory address, it would identify what kind of data is in the packet
+
+**0a** always comes after a# ??
+
+**data:** the data, Bytes 4-8
+
+**checksum:** The checksum which is an 8-Bit Checksum Xor including the first byte "aa" (CONFIRMED)
+
+**bb** Marks the end of a transmission (CONFIRMED)
 
 **************
 
