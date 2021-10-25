@@ -131,6 +131,9 @@ aa a# 0a data data data data data checksum bb
 
 **************
 ### MAP:
+
+All those without 'XX' are currently unknown
+
 |         | BYTE|  4  |  5  |  6  |  7  |  8  |     |    Comment                                            |
 | ------- | --- | --- | --- | --- | --- | --- | --- | ----------------------------------------------------- |
 | **REG** |     |     |     |     |     |     |     |   XX is a Byte, see this column for what byte is what |
