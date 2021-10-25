@@ -96,6 +96,8 @@ aa a# 0a data data data data data checksum bb
 -checksum: The checksum which is an 8-Bit Checksum Xor including the first byte "aa" (CONFIRMED)
 -bb: Marks the end of a transmission (CONFIRMED)
 
+**************
+
 NOTES:
 
 •Switch headlight on/off: On: AA070601AABB | Off: AA070600ABBB
@@ -115,6 +117,9 @@ NOTES:
 •RUN TIME:          a3, byte 8 = minutes
 
 •HEADLIGHT STATUS:  a4, byte 8 = 0x00 off, 0x10 on
+
+**************
+MAP:
 
 ID |  BYTE  4  5  6  7  8
 
