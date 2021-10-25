@@ -67,19 +67,21 @@ Jetson Bolt (Non-Pro) model.
 
 **************
 
-### TO INCREASE ABOVE 19 MPH, PLEASE READ ALL OF THE BELOW:
+### TO INCREASE ABOVE 19 MPH, PLEASE READ ALL OF THE BELOW BEFORE CONTINUING:
 
 Per the "Ride Jetson" App for Android, the minimum speed is 3 mph (5 km/h) and the
 maximum speed is 19 mph (30 km/h) [really it's 18.6 mph rounded up since calculation is from km].
 These are the settings that we know will work and is considered "SAFE"
 
-That said, the speed can be increased further above 19 mph (30 km/h) if you're feeling frisky however it is
+That said, the speed can be increased further above 19 mph (30 km/h) if you're feeling frisky.. however it is
 unknown what this will result in. This means DO IT AT YOUR OWN RISK - only if you know what you are doing.
-Setting the speed higher MAY result in hotter motor tempuratures, higher Amps through the controller
-and battery. OR, and this is probably the case... the controller may have an auto-shutoff built in which
-prevent too many Amps, too hot motor temp, etc.
+Setting the speed higher MAY result in hotter motor/controller tempuratures, higher Amps pumped through the controller
+and battery. Damage may be done to Motor, Controller, and or Battery
 
-If you accept these risks:
+...OR, and this is probably the case... the controller may have auto-shutdown proterctions built in which
+prevent too many Amps, too hot motor temp, controller temp, etc.
+
+**If you accept these risks:**
 To increase speed higher, change TARGET_SPEED_MPH to a value higher than 19. Next change the below from
                          AGREE_TO_TERMS false -> AGREE_TO_TERMS true
 This will unlock the protection built into this program which prevent higher than 19 mph
