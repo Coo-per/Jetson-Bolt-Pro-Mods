@@ -53,6 +53,7 @@ Jetson Bolt (Non-Pro) model.
 **1)** Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
 **2)** Upload the program your arduino board.
 **3)** With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pins:
+
       | ARDUINO PIN | WIRE             | JETSON BOLT PRO CONNECTOR |
       | ----------- | ---------------  | ------------------------- |
       | GND         | <--connect to--> | BLACK Wire                |
