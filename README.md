@@ -1,3 +1,5 @@
+## Introduction
+
 This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only completed mod is speedhack.
 
 https://www.youtube.com/watch?v=HBDkVcntbl0
@@ -12,6 +14,8 @@ Credit and thanks goes to **NTWM420** on reddit for letting me meet up with them
 He is a nice guy that wants to help everyone that owns this bike.
 
 **************
+
+### TLDR
 
 If you have technical know-how and just want to send commands serially yourself. The TLDR is..
 Baud rate: 115200, TX the HEX message on the Grey wire: aa06061eb4bb
