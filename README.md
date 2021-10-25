@@ -97,13 +97,22 @@ aa a# 0a data data data data data checksum bb
 -bb: Marks the end of a transmission (CONFIRMED)
 
 NOTES:
+
 •Switch headlight on/off: On: AA070601AABB | Off: AA070600ABBB
-•HEADLIGHT STATUS: "A4" BYTE 8. 0x00 = off. 0x10 = on. untested fully.. 100% CONFIRMED.
-•SPEED:    Appears to be "A1" BYTE 5 & 6. When BYTE 6 becomes greater than 0xFF, it rolls over to 0x01 in BYTE 5, continues counting from 0 in BYTE 6... ( (byte 5 * 0xff) + byte 6) MEDIUM-HIGH CONFIDENCE.
-•TEMP:     Appears to be stored in celsius in "A1" byte 8. Also duplicated data in "A7" byte 8. MEDIUM-HIGH CONFIDENCE.
-•VOLTAGE:  Could be "A1" BYTE 4? | "A4" BYTE 5? | "A7" BYTE 8? | "A2" BYTE 8? | LOW CONFIDENCE.
-•BATTERY %: Battery % is same as Voltage. Seems like "A1" BYTE 4, which starts at 0x64 (100) when fully charged. Need to see if it drops after driving. -THIS INFO APPEARS TO BE WRONG.
-•CURRENT:  AMPS
-•ODO:      KM/MI  I think it's in "A2" in either bytes 5, 7, or 8. Probably byte 5 since it starts at 0 - counts up when driving. MEDIUM-HIGH CONFIDENCE
-•RUN TIME: Stored in minutes. Appears to be from "A3" at byte # 8. Starts immediately at 1, ++ each minute. HIGH CONFIDENCE
-•MAX SPEED:Stored in "A3" BYTE 4 in km/h 100% CONFIDENCE
+•MAX SPEED:         a3, byte 4 = KMPH
+•CURRENT SPEED:     a1, (byte 5 * 0xff) + byte 6) - Might be in RPM
+•TEMPERATURE:       a1, byte 8 AND DUPLICATED IN a7, byte 8 = C
+•VOLTAGE:  V
+•CURRENT:  A 
+•ODOMETER:          a2, byte 5 = unknown format
+•RUN TIME:          a3, byte 8 = minutes
+•HEADLIGHT STATUS:  a4, byte 8 = 0x00 off, 0x10 on
+
+ /*
+  * ID |  BYTE  4  5  6  7  8
+  * a1          ** ** ** 00 **  XXXX (4) | CURRENT SPEED (5 & 6) | TEMP (8)
+  * a2          00 ** 00 ** **  ODO (5, probably 4 too) | XXXX (7) | XXXX (8)
+  * a3          ** 00 00 00 **  MAX SPEED (4) | RUN TIME (8)
+  * a4          01 ac 00 00 **  HEADLIGHT STATUS (8)
+  * a7          0a 0a d1 00 **  TEMP AGAIN (8)
+  */
