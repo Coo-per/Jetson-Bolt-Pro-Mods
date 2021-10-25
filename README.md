@@ -95,17 +95,17 @@ aa a# 0a data data data data data checksum bb
 
 1  2  3  4    5    6    7    8    9        10 //Byte #
 
-**aa:** Marks the start of a transmission (CONFIRMED)
+**aa:** Start transmission [Always aa]
 
-**a#:** Appears to be the memory address, it would identify what kind of data is in the packet
+**a#:** Register #
 
-**0a** always comes after a# ??
+**0a:** End register # [Always 0a]
 
-**data:** the data, Bytes 4-8
+**data:** The data in the register, Byte# 4-8
 
-**checksum:** The checksum which is an 8-Bit Checksum Xor including the first byte "aa" (CONFIRMED)
+**checksum:** The checksum - which is an 8-Bit Checksum Xor (including the first byte "aa")
 
-**bb** Marks the end of a transmission (CONFIRMED)
+**bb** End transmission [Always bb]
 
 **************
 
