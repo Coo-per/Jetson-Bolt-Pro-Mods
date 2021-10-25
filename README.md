@@ -1,4 +1,4 @@
-## Introduction
+## Introduction to this Repo
 
 This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only completed mod is speedhack.
 
@@ -17,15 +17,16 @@ He is a nice guy that wants to help everyone that owns this bike.
 
 #### TLDR
 
-If you have technical know-how and just want to send commands serially yourself. The TLDR is..
-Baud rate: 115200, TX the HEX message on the Grey wire: aa06061eb4bb
+If you have technical know-how and just want to send commands serially yourself.
+**Baud rate: 115200, TX the HEX message on the Grey wire: aa06061eb4bb**
 
-Otherwise, keep reading.
+Otherwise, if you didn't understand that keep reading...
 
 **************
 
 # Speedhack
 
+### Intro to Speedhack
 If you're just here for the speed hack download JetsonSpeedHack.ino and follow the instructions inside.
 You will need an arduino, and upload the code JetsonSpeedHack.ino
 
