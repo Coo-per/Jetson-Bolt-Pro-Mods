@@ -1,44 +1,69 @@
 #include <SoftwareSerial.h>
 
-//Connect Arduino GND to black wire on Jetson Bolt Pro and Arduino Digital
-//Pin 2 to Brown wire on Jetson Bolt Pro
-//SoftwareSerial RX on pin 2 -> connect to BROWN wire on the Jetson Bolt Pro
-SoftwareSerial mySerial(2, 3); // RX, TX
+// Credit and thanks goes to NTWM420 on reddit for letting me meet up with them and tinker
+// with their original Jetson bluetooth module.
+// He is a nice guy that just wants to help everyone that owns this bike.
 
 /*
- * @@@@@@@@@@@@@@@ To find: @@@@@@@@@@@@@@@
- *    •Command to switch headlight on/off: On: AA070601AABB | Off: AA070600ABBB
- *    •MAX SPEED:         a3, byte 4 = KMPH
- *    •CURRENT SPEED:     a1, (byte 5 * 0xff) + byte 6) - Might be in RPM
- *    •TEMPERATURE:       a1, byte 8 AND DUPLICATED IN a7, byte 8 = C
- *    •VOLTAGE:  V
- *    •CURRENT:  A 
- *    •ODOMETER:          a2, byte 5 = unknown format
- *    •RUN TIME:          a3, byte 8 = minutes
- *    •HEADLIGHT STATUS:  a4, byte 8 = 0x00 off, 0x10 on
- * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ * @@@@@@@@@@@@@@@@@@@@ Disclaimer! @@@@@@@@@@@@@@@@@@@@
+ * 
+ * Everything in this program is DO AT YOUR OWN RISK and for educational purposes ONLY.
+ * It may not be legal to ride in your city/state/country with the use of a speedhack
+ * setting higher than factory.
+ * These bikes ship with a speed setting at 15 mph, and using the official Ride Jetson
+ * app 19 mph is the highest setting. This is considered "Safe" by the community of those
+ * who have already done this speedhack using the genuine Bluetooth module from the
+ * Jetson Bolt (Non-Pro) model.
+ * 
+ * @@@@@@@@@@@@@@ How to use this program @@@@@@@@@@@@@@
+ * 
+ * 1) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
+ * 2) Upload the program your arduino board.
+ * 3) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pins:
+ *    ARDUINO GND       | --connect to--> | BLACK Wire on Jetson Bolt Pro
+ *    ARDUINO DIGITAL 3 | --connect to--> | GREY Wire on Jetson Bolt Pro
+ *    ARDUINO 5V        | --connect to--> | ORANGE Wire on Jetson Bolt Pro
+ *    
+ * 4) Connect 36v battery and power the Jetson Bolt Pro ON
+ * 5) The headlight will flash twice indicating Speed hack is complete. For good measure.. while everything is still
+ *    connected you can press the reset button on the arduino which will run the program once more - just to be sure.
+ * 
+ * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  */
+#define TARGET_SPEED_MPH 19
 
- /*
-  * ID |  BYTE  4  5  6  7  8
-  * a1          ** ** ** 00 **  XXXX (4) | CURRENT SPEED (5 & 6) | TEMP (8)
-  * a2          00 ** 00 ** **  ODO (5, probably 4 too) | XXXX (7) | XXXX (8)
-  * a3          ** 00 00 00 **  MAX SPEED (4) | RUN TIME (8)
-  * a4          01 ac 00 00 **  HEADLIGHT STATUS (8)
-  * a7          0a 0a d1 00 **  TEMP AGAIN (8)
-  */
+/*
+ * @@@@@@@@@@@@@@ TO INCREASE ABOVE 19 MPH, PLEASE READ ALL OF THE BELOW @@@@@@@@@@@@@@
+ * 
+ * Per the "Ride Jetson" App for Android, the minimum speed is 3 mph (5 km/h) and the
+ * maximum speed is 19 mph (30 km/h) [really it's 18.6 mph rounded up since calculation is from km].
+ * These are the settings that we know will work and is considered "SAFE"
+ * 
+ * That said, the speed can be increased further above 19 mph (30 km/h) if you're feeling frisky however it is
+ * unknown what this will result in. This means DO IT AT YOUR OWN RISK - only if you know what you are doing.
+ * Setting the speed higher MAY result in hotter motor tempuratures, higher Amps through the controller
+ * and battery. OR, and this is probably the case... the controller may have an auto-shutoff built in which
+ * prevent too many Amps, too hot motor temp, etc.
+ * 
+ * If you accept these risks:
+ * To increase speed higher, change TARGET_SPEED_MPH to a value higher than 19. Next change the below from
+ *                          AGREE_TO_TERMS false -> AGREE_TO_TERMS true
+ * This will unlock the protection built into this program which prevent higher than 19 mph
+ * 
+ * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ */
+#define AGREE_TO_TERMS false
 
-int maxSpeedKM = 0;   // kmph
-float speedRPM = 0.0; // RPM
-int temperature = 0;  // Celsius
-float voltage = 0.0f; // UNKNOWN
-int odo = 0;          // unknown format
-int runTime = 0;      // Minutes
-int headlight = 0;    // 0x00 off | 0x10 on
+//SoftwareSerial TX on pin 3 -> connect to GREY wire on the Jetson Bolt Pro
+SoftwareSerial mySerial(2, 3); // RX, TX
 
-int incoming;
-int incomingArr[9];
-int index = 0;
+//Start message: [aa] | Message Destination: [xxxx] | Data: [xx] | Checksum: [xx] | End message: [bb]
+//To change max speed, 0606 is the message destination and data is desired max speed (KM) in hexadecimal
+//For example 19 MPH the command is: aa06061eb4bb
+int kmph = TARGET_SPEED_MPH * 1.609;  //Convert mph to kmph
+byte bA[] = {0xaa, 0x06, 0x06, kmph, 0x00, 0xbb}; //Initialize byte array
+byte headlightsOn[] = {0xaa, 0x07, 0x06, 0x01, 0xaa, 0xbb};
+byte headlightsOff[] = {0xaa, 0x07, 0x06, 0x00, 0xab, 0xbb};
 
 void setup()
 { 
@@ -48,85 +73,48 @@ void setup()
 
   // set the data rate for the SoftwareSerial port
   mySerial.begin(115200);
+
+  delay(200); // Wait for Jetson controller to boot
+
+  if (!(TARGET_SPEED_MPH < 3)) {                        // Only accept values higher than 3
+
+    if (kmph > 0xff)
+      kmph = 0xff;
+    if (kmph > 30 && !AGREE_TO_TERMS)                   //If the user has not agreed to terms
+      bA[3] = 30;                                       //Do not accept speed higher than 19 mph (30 kmph)
+
+    int SizeOfArray = sizeof(bA) / sizeof(bA[0]);
+    bA[4] = checkSum(bA, SizeOfArray);  //Calculate and add the checksum to byte array
   
+    for(int i = 0; i < SizeOfArray; i++)
+      mySerial.write(bA[i]);                            //Write bytes serially to pin 3. This should be
+                                                        //connected to the GREY wire of the Jetson Bolt Pro
+
+    //Flash the headlights twice to confirm speed programming complete
+    delay(200);
+    for(int i = 0; i < SizeOfArray; i++)
+      mySerial.write(headlightsOn[i]);
+    delay(500);
+    for(int i = 0; i < SizeOfArray; i++)
+      mySerial.write(headlightsOff[i]);
+    delay(500);
+    for(int i = 0; i < SizeOfArray; i++)
+      mySerial.write(headlightsOn[i]);
+    delay(500);
+    for(int i = 0; i < SizeOfArray; i++)
+      mySerial.write(headlightsOff[i]);
+      
+  }
+}
+
+byte checkSum(byte byteArray[], int arraySize) {
+  byte checksum = 0x00;
+  for(int i = 0; i < arraySize - 2; i++)
+    checksum ^= byteArray[i];
+  return checksum;
 }
 
 void loop()
 {
-  if (mySerial.available()) {
-      incoming = mySerial.read();
-      if (incoming != 0xBB) {
-        incomingArr[index] = incoming;
-        index++;
-      } else {
-        
-        if (checkSum(incomingArr, 10) == incomingArr[8]) {
-          if (incomingArr[1] == 0xA1) { //Only read messages from A1
-            speedRPM = (incomingArr[5-1] * 0xff) + incomingArr[6-1];
-            temperature = incomingArr[8-1];
-            //printRegister(incomingArr);
-          } else if (incomingArr[1] == 0xA2) {
-            odo = incomingArr[5-1];
-            //printRegister(incomingArr);
-          } else if (incomingArr[1] == 0xA3) {
-            maxSpeedKM = incomingArr[4-1];
-            runTime = incomingArr[8-1];
-            //printRegister(incomingArr);
-          } else if (incomingArr[1] == 0xA4) {
-            headlight = incomingArr[8-1];
-            //printRegister(incomingArr);
-          } else if (incomingArr[1] == 0xA7) {
-            //printRegister(incomingArr);
-          }
-        }
-        
-        index = 0;
-      }
-
-      printAll();
-      //speed not working
-      //voltage unknown
   
-  }
-  if (Serial.available())
-    mySerial.write(Serial.read());
-}
-
-void printAll() {
-  Serial.println();
-  Serial.print("MAX: ");
-  Serial.print(maxSpeedKM);
-  Serial.print("km|");
-  Serial.print(maxSpeedKM/1.609);
-  Serial.print("mi\tSpeed: ");
-  Serial.print(speedRPM); //Went to 383.. might be in RPM
-  Serial.print("RPM\t\tHeadlight: ");
-  Serial.print(headlight);
-  //Serial.println(voltage);
-
-  Serial.print("\nODO: ");
-  Serial.print(odo);
-  Serial.print("\tRun Time: ");
-  Serial.print(runTime);
-  Serial.print(" Minutes\tTemp: ");
-  Serial.print(temperature);
-  Serial.print("C / ");
-  Serial.print( ( temperature * (9/5) ) + 35);
-  Serial.println("F\t");
-}
-
-void printRegister( int arr[] ) {
-  for (int i = 0; i < 9; i++) {
-    if (arr[i] <= 0x0f)
-      Serial.print(0);
-    Serial.print(arr[i], HEX);
-  }
-    Serial.println(0xbb, HEX);
-}
-
-int checkSum(int inArray[], int arraySize) {
-  int checksum = 0x00;
-  for(int i = 0; i < arraySize - 2; i++)
-    checksum ^= inArray[i];
-  return checksum;
 }
