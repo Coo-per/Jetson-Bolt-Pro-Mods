@@ -129,6 +129,36 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 ### NOTES:
 
+| Status                |  Byte location                                  |
+| --------------------- | ----------------------------------------------- |
+| **CURRENT SPEED:**    | a1, (byte 5 * 0xff) + byte 6) - Might be in RPM |
+| **TEMPERATURE:**      | a1, byte 8 AND DUPLICATED IN a7, byte 8 = C     |
+| **ODOMETER:**         | a2, byte 5 = unknown format                     |
+| **MAX SPEED:**        | a3, byte 4 = KMPH                               |
+| **RUN TIME:**         | a3, byte 8 = minutes                            |
+| **HEADLIGHT STATUS:** | a4, byte 8 = 0x00 off, 0x10 on                  |
+| **VOLTAGE:**          | V - currently unknown                           |
+| **CURRENT:**          | Amps - currently unknown                        |
+
+**************
+
+### MAP:
+
+All those without 'XX' are currently unknown
+
+|         | BYTE|  4  |  5  |  6  |  7  |  8  |     |    Comment                                            |
+| ------- | --- | --- | --- | --- | --- | --- | --- | ----------------------------------------------------- |
+| **REG** |     |     |     |     |     |     |     |   XX is a Byte, see this column for what byte is what |
+| **a1**  |     |  XX |  XX |  XX |  00 |  XX |     |   *XXXX (4), CURRENT SPEED (5 & 6), TEMP (8)*         |
+| **a2**  |     |  00 |  XX |  00 |  XX |  XX |     |   *ODO (5, probably 4 too), XXXX (7), XXXX (8)*       |
+| **a3**  |     |  XX |  00 |  00 |  00 |  XX |     |   *MAX SPEED (4), RUN TIME (8)*                       |
+| **a4**  |     |  01 |  ac |  00 |  00 |  XX |     |   *HEADLIGHT STATUS (8)*                              |
+| **a7**  |     |  0a |  0a |  d1 |  00 |  XX |     |   *TEMP AGAIN (8)*                                    |
+
+**************
+
+### Commands break-down
+
 **UNTESTED - Walk Mode on/off:** On: aa050601a8bb | Off: aa050600a9bb
 
 **Maximum Speed:** aa0606YYZZbb - Where YY is the speed in KM and ZZ is the checksum
@@ -156,30 +186,3 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 **checksum:** Checksum
 
 **bb:** End transmission
-
-
-
-| Status                |  Byte location                                  |
-| --------------------- | ----------------------------------------------- |
-| **CURRENT SPEED:**    | a1, (byte 5 * 0xff) + byte 6) - Might be in RPM |
-| **TEMPERATURE:**      | a1, byte 8 AND DUPLICATED IN a7, byte 8 = C     |
-| **ODOMETER:**         | a2, byte 5 = unknown format                     |
-| **MAX SPEED:**        | a3, byte 4 = KMPH                               |
-| **RUN TIME:**         | a3, byte 8 = minutes                            |
-| **HEADLIGHT STATUS:** | a4, byte 8 = 0x00 off, 0x10 on                  |
-| **VOLTAGE:**          | V - currently unknown                           |
-| **CURRENT:**          | Amps - currently unknown                        |
-
-**************
-### MAP:
-
-All those without 'XX' are currently unknown
-
-|         | BYTE|  4  |  5  |  6  |  7  |  8  |     |    Comment                                            |
-| ------- | --- | --- | --- | --- | --- | --- | --- | ----------------------------------------------------- |
-| **REG** |     |     |     |     |     |     |     |   XX is a Byte, see this column for what byte is what |
-| **a1**  |     |  XX |  XX |  XX |  00 |  XX |     |   *XXXX (4), CURRENT SPEED (5 & 6), TEMP (8)*         |
-| **a2**  |     |  00 |  XX |  00 |  XX |  XX |     |   *ODO (5, probably 4 too), XXXX (7), XXXX (8)*       |
-| **a3**  |     |  XX |  00 |  00 |  00 |  XX |     |   *MAX SPEED (4), RUN TIME (8)*                       |
-| **a4**  |     |  01 |  ac |  00 |  00 |  XX |     |   *HEADLIGHT STATUS (8)*                              |
-| **a7**  |     |  0a |  0a |  d1 |  00 |  XX |     |   *TEMP AGAIN (8)*                                    |
