@@ -131,9 +131,9 @@ aa a# 0a data data data data data checksum bb
 
 **************
 ### MAP:
-
-| REG | BYTE|  4  |  5  |  6  |  7  |  8  |
+|     | BYTE|  4  |  5  |  6  |  7  |  8  |
 | --- | --- | --- | --- | --- | --- | --- |
+| REG |     |     |     |     |     |     |
 | a1  |     |  ** |  ** |  ** |  00 |  ** |   [XXXX (4), CURRENT SPEED (5 & 6), TEMP (8)]
 | a2  |     |  00 |  ** |  00 |  ** |  ** |   [ODO (5, probably 4 too) | XXXX (7) | XXXX (8)]
 | a3  |     |  ** |  00 |  00 |  00 |  ** |   [MAX SPEED (4) | RUN TIME (8)]
