@@ -107,7 +107,7 @@ In the future if time permits, would like to add a Jetson Bolt Pro speedometer w
 
 The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
-### Controller message format
+### Controller Message Format
 
 | Byte # | 1  | 2  | 3  | 4    | 5    | 6    | 7    | 8    | 9        | 10 |
 | ------ | -- | -- | -- | ---- | ---- | ---- | ---- | ---- | -------- | -- |
@@ -133,17 +133,21 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 **Switch headlight on/off:** On: aa070601aabb | Off: aa070600abbb
 
-From this we can gather the commands to change variables of the controller are of format: aaXX06YYZZbb
+### Command Format
+
+| Byte # | 1  | 2   | 3  | 4    | 5        | 6  |
+| ------ | -- | --- | -- | ---- | -------- | -- |
+|        | aa | Var | 06 | data | checksum | bb |
 
 **aa:** Start transmission
 
-**XX:** Variable to change
+**Var:** Variable to change
 
 **06:** End variable to change
 
-**YY:** New value of variable
+**data:** New value of variable
 
-**ZZ:** Checksum
+**checksum:** Checksum
 
 **bb:** End transmission
 
