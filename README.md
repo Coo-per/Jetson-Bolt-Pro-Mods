@@ -1,6 +1,8 @@
-This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only mod is speedhack - more to come?
+This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only completed mod is speedhack.
 
 https://www.youtube.com/watch?v=HBDkVcntbl0
+
+In the Testing folder "Jetson-Read-Controller-Status.ino" is a partially working information display with Speed, temp, odometer, etc. (More details below in "OTHER MODS" section)
 
 **************
 
@@ -39,10 +41,6 @@ Jetson Bolt (Non-Pro) model.
 
 How to use this program:
 
-Recommended to first program with 3 mph- test the throttle and see the wheel spinning slowly.
-Then run through all the steps again with 19 mph
-In this way you will know that the speed hack has FOR SURE been applied.
-
 1) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
 2) Upload the program your arduino board.
 3) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pins:
@@ -54,8 +52,8 @@ In this way you will know that the speed hack has FOR SURE been applied.
    ARDUINO 5V        | --connect to--> | ORANGE Wire on Jetson Bolt Pro
    
 4) Connect 36v battery and power the Jetson Bolt Pro ON
-5) Speed hack complete. For good measure.. while everything is still connected you can press the reset
-   button on the arduino which will run the program once more
+5) The headlight will flash twice indicating Speed hack is complete. For good measure.. while everything is still connected you can press the reset
+   button on the arduino which will run the program once more - just to be sure.
 
 **************
 
