@@ -96,7 +96,7 @@ This will unlock the protection built into the Arduino program which prevents ru
 
 **************
 
-# OTHER MODS:
+# OTHER MODS - NOT SPEEDHACK RELATED
 
 **************
 
