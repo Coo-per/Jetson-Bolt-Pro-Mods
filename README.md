@@ -111,13 +111,13 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 | Byte # | 1  | 2  | 3  | 4    | 5    | 6    | 7    | 8    | 9        | 10 |
 | ------ | -- | -- | -- | ---- | ---- | ---- | ---- | ---- | -------- | -- |
-|        | aa | a# | 0a | data | data | data | data | data | checksum | bb |
+|        | aa | a# | #Bytes | data | data | data | data | data | checksum | bb |
 
 **aa:** Start transmission [Always aa]
 
 **a#:** Register #
 
-**0a:** End register # [Always 0a]
+**0a:** Number of bytes for the whole message [Always 0a ??]
 
 **data:** The data in the register, Byte# 4-8
 
@@ -137,17 +137,19 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 **UNTESTED - Zero Start on/off:** On: aa120600bebb | Off: aa120601bfbb
 
+**UNTESTED - Unlock command (default password 000000):** aa160b303030303030b7bb
+
 ### Command Format
 
-| Byte # | 1  | 2   | 3  | 4    | 5        | 6  |
-| ------ | -- | --- | -- | ---- | -------- | -- |
-|        | aa | Var | 06 | data | checksum | bb |
+| Byte # | 1  | 2   | 3      | 4    | ...Data may continue... | Last Byte - 1 | Last Byte |
+| ------ | -- | --- | ------ | ---- | ...Data may continue... | ------------- | --------- |
+|        | aa | Var | #Bytes | data | ...Data may continue... | checksum      | bb        |
 
 **aa:** Start transmission
 
 **Var:** Variable to change
 
-**06:** End variable to change
+**#Bytes** Number of bytes for the whole message
 
 **data:** New value of variable
 
