@@ -131,7 +131,7 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 **UNTESTED - Walk Mode on/off:** On: aa050601a8bb | Off: aa050600a9bb
 
-**Speed:** aa0606YYZZbb - Where YY is the speed in KM and ZZ is the checksum
+**Maximum Speed:** aa0606YYZZbb - Where YY is the speed in KM and ZZ is the checksum
 
 **Switch headlight on/off:** On: aa070601aabb | Off: aa070600abbb
 
