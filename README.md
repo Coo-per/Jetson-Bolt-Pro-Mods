@@ -6,8 +6,10 @@ In the Testing folder "Jetson-Read-Controller-Status.ino" is a partially working
 
 **************
 
+#### Credit
+
 Credit and thanks goes to NTWM420 on reddit for letting me meet up with them and tinker with their original Jetson bluetooth module.
-He is a nice guy that just wants to help everyone that owns this bike.
+He is a nice guy that wants to help everyone that owns this bike.
 
 **************
 
@@ -18,6 +20,8 @@ Otherwise, keep reading.
 
 **************
 
+# Speedhack
+
 If you're just here for the speed hack download JetsonSpeedHack.ino and follow the instructions inside.
 You will need an arduino, and upload the code JetsonSpeedHack.ino
 
@@ -27,7 +31,7 @@ You might as well just buy an arduino and skip the HM-10.
 
 **************
 
-# Disclaimer!:
+### Disclaimer!:
 
 Everything in this program is DO AT YOUR OWN RISK and for educational purposes ONLY.
 It may not be legal to ride in your city/state/country with the use of a speedhack
@@ -39,7 +43,7 @@ Jetson Bolt (Non-Pro) model.
 
 **************
 
-# How to use this program:
+### How to use this program:
 
 1) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
 2) Upload the program your arduino board.
@@ -57,7 +61,7 @@ Jetson Bolt (Non-Pro) model.
 
 **************
 
-# TO INCREASE ABOVE 19 MPH, PLEASE READ ALL OF THE BELOW:
+### TO INCREASE ABOVE 19 MPH, PLEASE READ ALL OF THE BELOW:
 
 Per the "Ride Jetson" App for Android, the minimum speed is 3 mph (5 km/h) and the
 maximum speed is 19 mph (30 km/h) [really it's 18.6 mph rounded up since calculation is from km].
