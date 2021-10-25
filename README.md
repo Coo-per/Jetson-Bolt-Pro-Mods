@@ -117,8 +117,13 @@ NOTES:
 •HEADLIGHT STATUS:  a4, byte 8 = 0x00 off, 0x10 on
 
 ID |  BYTE  4  5  6  7  8
+
 a1          ** ** ** 00 **  XXXX (4) | CURRENT SPEED (5 & 6) | TEMP (8)
+
 a2          00 ** 00 ** **  ODO (5, probably 4 too) | XXXX (7) | XXXX (8)
+
 a3          ** 00 00 00 **  MAX SPEED (4) | RUN TIME (8)
+
 a4          01 ac 00 00 **  HEADLIGHT STATUS (8)
+
 a7          0a 0a d1 00 **  TEMP AGAIN (8)
