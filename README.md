@@ -83,7 +83,9 @@ prevent too many Amps, too hot motor temp, controller temp, etc.
 
 **If you accept these risks:**
 To increase speed higher, change TARGET_SPEED_MPH to a value higher than 19. Next change the below from
+
                          AGREE_TO_TERMS false -> AGREE_TO_TERMS true
+
 This will unlock the protection built into this program which prevent higher than 19 mph
 
 **************
