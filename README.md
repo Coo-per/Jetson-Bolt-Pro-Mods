@@ -48,11 +48,11 @@ Jetson Bolt (Non-Pro) model.
 1) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
 2) Upload the program your arduino board.
 3) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pins:
-   | ARDUINO PIN | WIRE            | JETSON BOLT PRO CONNECTOR |
-   | ----------- | --------------- | ------------------------- |
-   | GND         | --connect to--> | BLACK Wire                |
-   | DIGITAL 3   | --connect to--> | GREY Wire                 |
-   | 5V          | --connect to--> | ORANGE Wire               |
+   | ARDUINO PIN | WIRE             | JETSON BOLT PRO CONNECTOR |
+   | ----------- | ---------------  | ------------------------- |
+   | GND         | <--connect to--> | BLACK Wire                |
+   | DIGITAL 3   | <--connect to--> | GREY Wire                 |
+   | 5V          | <--connect to--> | ORANGE Wire               |
    
 4) Connect 36v battery and power the Jetson Bolt Pro ON
 5) The headlight will flash twice indicating Speed hack is complete. For good measure.. while everything is still connected you can press the reset
