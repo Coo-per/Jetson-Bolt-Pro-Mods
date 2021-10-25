@@ -115,14 +115,14 @@ aa a# 0a data data data data data checksum bb
 
 | Status                |  Byte location                                  |
 | --------------------- | ----------------------------------------------- |
-| **MAX SPEED:**        | a3, byte 4 = KMPH                               |
 | **CURRENT SPEED:**    | a1, (byte 5 * 0xff) + byte 6) - Might be in RPM |
 | **TEMPERATURE:**      | a1, byte 8 AND DUPLICATED IN a7, byte 8 = C     |
-| **VOLTAGE:**          | V                                               |
-| **CURRENT:**          | Amps                                            |
 | **ODOMETER:**         | a2, byte 5 = unknown format                     |
+| **MAX SPEED:**        | a3, byte 4 = KMPH                               |
 | **RUN TIME:**         | a3, byte 8 = minutes                            |
 | **HEADLIGHT STATUS:** | a4, byte 8 = 0x00 off, 0x10 on                  |
+| **VOLTAGE:**          | V                                               |
+| **CURRENT:**          | Amps                                            |
 
 **************
 ### MAP:
