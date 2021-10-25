@@ -135,7 +135,7 @@ aa a# 0a data data data data data checksum bb
 | ------- | --- | --- | --- | --- | --- | --- | --- | ----------------------------------------------------- |
 | **REG** |     |     |     |     |     |     |     |   XX is a Byte, see this column for what byte is what |
 | **a1**  |     |  XX |  XX |  XX |  00 |  XX |     |   *XXXX (4), CURRENT SPEED (5 & 6), TEMP (8)*         |
-| **a2**  |     |  00 |  XX |  00 |  XX |  XX |     |   *ODO (5, probably 4 too) | XXXX (7) | XXXX (8)*     |
-| **a3**  |     |  XX |  00 |  00 |  00 |  XX |     |   *MAX SPEED (4) | RUN TIME (8)*                      |
+| **a2**  |     |  00 |  XX |  00 |  XX |  XX |     |   *ODO (5, probably 4 too), XXXX (7), XXXX (8)*       |
+| **a3**  |     |  XX |  00 |  00 |  00 |  XX |     |   *MAX SPEED (4), RUN TIME (8)*                       |
 | **a4**  |     |  01 |  ac |  00 |  00 |  XX |     |   *HEADLIGHT STATUS (8)*                              |
 | **a7**  |     |  0a |  0a |  d1 |  00 |  XX |     |   *TEMP AGAIN (8)*                                    |
