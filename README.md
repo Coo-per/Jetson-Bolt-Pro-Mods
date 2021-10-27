@@ -109,8 +109,8 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 ### Controller Message Format
 
-| Byte # | 1  | 2  | 3  | 4    | 5    | 6    | 7    | 8    | 9        | 10 |
-| ------ | -- | -- | -- | ---- | ---- | ---- | ---- | ---- | -------- | -- |
+| Byte # | 1  | 2  | 3      | 4    | 5    | 6    | 7    | 8    | 9        | 10 |
+| ------ | -- | -- | ------ | ---- | ---- | ---- | ---- | ---- | -------- | -- |
 |        | aa | a# | #Bytes | data | data | data | data | data | checksum | bb |
 
 **aa:** Start transmission [Always aa]
@@ -131,7 +131,7 @@ The controller constantly transmits 10-Bytes via serial 115200 BAUD.
 
 | Status                |  Byte location                                  |
 | --------------------- | ----------------------------------------------- |
-| **CURRENT SPEED:**    | a1, (byte 5 * 0xff) + byte 6) - Might be in RPM |
+| **CURRENT SPEED:**    | a1, ( (byte 5 * 0xff) + byte 6) / 10 ) is in km |
 | **TEMPERATURE:**      | a1, byte 8 AND DUPLICATED IN a7, byte 8 = C     |
 | **ODOMETER:**         | a2, byte 5 = unknown format                     |
 | **MAX SPEED:**        | a3, byte 4 = KMPH                               |
@@ -149,11 +149,11 @@ All those without 'XX' are currently unknown
 |         | BYTE|  4  |  5  |  6  |  7  |  8  |     |    Comment                                            |
 | ------- | --- | --- | --- | --- | --- | --- | --- | ----------------------------------------------------- |
 | **REG** |     |     |     |     |     |     |     |   XX is a Byte, see this column for what byte is what |
-| **a1**  |     |  XX |  XX |  XX |  00 |  XX |     |   *XXXX (4), CURRENT SPEED (5 & 6), TEMP (8)*         |
+| **a1**  |     |  XX |  XX |  XX |  00 |  XX |     |   *XXXX (4), CURRENT SPEED KM (5 & 6), TEMP C (8)*    |
 | **a2**  |     |  00 |  XX |  00 |  XX |  XX |     |   *ODO (5, probably 4 too), XXXX (7), XXXX (8)*       |
-| **a3**  |     |  XX |  00 |  00 |  00 |  XX |     |   *MAX SPEED (4), RUN TIME (8)*                       |
+| **a3**  |     |  XX |  00 |  00 |  00 |  XX |     |   *MAX SPEED KM (4), RUN TIME MINUTES (8)*            |
 | **a4**  |     |  01 |  ac |  00 |  00 |  XX |     |   *HEADLIGHT STATUS (8)*                              |
-| **a7**  |     |  0a |  0a |  d1 |  00 |  XX |     |   *TEMP AGAIN (8)*                                    |
+| **a7**  |     |  0a |  0a |  d1 |  00 |  XX |     |   *TEMP C AGAIN (8)*                                  |
 
 **************
 
