@@ -2,9 +2,13 @@
 
 This Repository is dedicated to mods for the Jetson Bolt Pro. At the moment the only completed mod is speedhack.
 
+Demo of speedhack:
 https://www.youtube.com/watch?v=HBDkVcntbl0
 
 In the Testing folder "Jetson-Read-Controller-Status.ino" is a partially working information display with Speed, temp, odometer, etc. (More details below in "OTHER MODS" section)
+
+Demo of speedometer:
+https://www.youtube.com/watch?v=8d0KWAItMqg
 
 **************
 
@@ -102,6 +106,8 @@ This will unlock the protection built into the Arduino program which prevents ru
 # OTHER MODS - NOT SPEEDHACK RELATED
 
 **************
+
+https://www.youtube.com/watch?v=8d0KWAItMqg
 
 In the future if time permits, would like to add a Jetson Bolt Pro speedometer which includes adjustable max speed on the fly, 1-click headlight on/off, Temperature, Voltage, Current, ODO, Ride Time display, etc. That project is located in Testing/Jetson-Read-Controller-Status.ino which just reads commands from the Jetson Bolt Pro controller. But the Jetson sends messages from Registers: A1 A2, A3, A4, A7...
 
