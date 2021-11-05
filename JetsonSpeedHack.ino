@@ -2,7 +2,7 @@
 
 // Credit and thanks goes to NTWM420 on reddit for letting me meet up with them and tinker
 // with their original Jetson bluetooth module.
-// He is a nice guy that just wants to help everyone that owns this bike.
+// He is a nice guy that wants to help everyone that owns this bike.
 
 /*
  * @@@@@@@@@@@@@@@@@@@@ Disclaimer! @@@@@@@@@@@@@@@@@@@@
@@ -76,35 +76,38 @@ void setup()
 
   delay(200); // Wait for Jetson controller to boot
 
-  if (!(TARGET_SPEED_MPH < 3)) {                        // Only accept values higher than 3
+  if (TARGET_SPEED_MPH < 3)             // Only accept values higher than 3
+    kmph = 3;
+  if (kmph > 0xff && AGREE_TO_TERMS)    // Don't allow setting higher than 0xff (255)
+    kmph = 0xff;
+  if (kmph > 30 && !AGREE_TO_TERMS)     // If the user has not agreed to terms
+    kmph = 30;                          // Do not accept speed higher than 19 mph (30 kmph)
 
-    if (kmph > 0xff)
-      kmph = 0xff;
-    if (kmph > 30 && !AGREE_TO_TERMS)                   //If the user has not agreed to terms
-      bA[3] = 30;                                       //Do not accept speed higher than 19 mph (30 kmph)
-
-    int SizeOfArray = sizeof(bA) / sizeof(bA[0]);
-    bA[4] = checkSum(bA, SizeOfArray);  //Calculate and add the checksum to byte array
+  bA[3] = kmph;
+    
+  int SizeOfArray = sizeof(bA) / sizeof(bA[0]);
+  bA[4] = checkSum(bA, SizeOfArray);  //Calculate and add the checksum to byte array
   
-    for(int i = 0; i < SizeOfArray; i++)
-      mySerial.write(bA[i]);                            //Write bytes serially to pin 3. This should be
-                                                        //connected to the GREY wire of the Jetson Bolt Pro
-
-    //Flash the headlights twice to confirm speed programming complete
-    delay(200);
-    for(int i = 0; i < SizeOfArray; i++)
-      mySerial.write(headlightsOn[i]);
-    delay(500);
-    for(int i = 0; i < SizeOfArray; i++)
-      mySerial.write(headlightsOff[i]);
-    delay(500);
-    for(int i = 0; i < SizeOfArray; i++)
-      mySerial.write(headlightsOn[i]);
-    delay(500);
-    for(int i = 0; i < SizeOfArray; i++)
-      mySerial.write(headlightsOff[i]);
-      
+  for(int i = 0; i < SizeOfArray; i++)
+  {
+    //Write bytes serially to pin 3. This should be connected to the GREY wire of the Jetson Bolt Pro
+    mySerial.write(bA[i]);
   }
+
+  //Flash the headlights twice to confirm speed programming complete
+  delay(200);
+  for(int i = 0; i < SizeOfArray; i++)
+    mySerial.write(headlightsOn[i]);
+  delay(500);
+  for(int i = 0; i < SizeOfArray; i++)
+    mySerial.write(headlightsOff[i]);
+  delay(500);
+  for(int i = 0; i < SizeOfArray; i++)
+    mySerial.write(headlightsOn[i]);
+  delay(500);
+  for(int i = 0; i < SizeOfArray; i++)
+    mySerial.write(headlightsOff[i]);
+
 }
 
 byte checkSum(byte byteArray[], int arraySize) {
