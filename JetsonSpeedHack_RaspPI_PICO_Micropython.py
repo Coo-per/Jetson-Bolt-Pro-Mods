@@ -16,17 +16,21 @@ Jetson Bolt (Non-Pro) model.
  
 @@@@@@@@@@@@@@ How to use this program @@@@@@@@@@@@@@
 
-1) SSH to your PI and enable the serial pins on your raspberry pi via option 2 at the following link: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/enabling-serial-console
-2) Install python serial on PI sudo apt-get install python3-serial
-3) Upload the program your Raspberry PI board.
-4) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
-5) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pin:
+1) Install Thonny for your Mac
+2) Select Thonny > Preferencs > > Interpreter
+3) In the Interpreter settings ensure that you have Micropython (Raspberry Pi Pico) and Board in FS Mode (/dev/******) your pico device on usb example cu/usbmodem101
+4) Copy this code into the a new file in thonny.
+5) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
+6) save and select Raspberry Pi Pico when prompted
+7) Name it boot.py so this runs when it is plugged into the Jetson
+8) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pin:
 
-   PI PIN 8 GPIO 14 (TXD)   | --connect to--> | GREY Wire on Jetson Bolt Pro
+   PICO Pin 0          | --connect to--> | BLACK Wire on Jetson Bolt Pro
+   PICO PIN 6          | --connect to--> | GREY Wire on Jetson Bolt Pro
+   PICO Pin 39         | --connect to--> | ORANGE Wire on Jetson Bolt Pro
 
-6) Connect 36v battery and power the Jetson Bolt Pro ON
-7) Run the program sudo python3 JetsonSpeedHack_RaspPI.py
-8) The headlight will flash twice indicating Speed hack is complete.
+9) Connect 36v battery and power the Jetson Bolt Pro ON
+10) The headlight will flash twice indicating Speed hack is complete.
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 """
