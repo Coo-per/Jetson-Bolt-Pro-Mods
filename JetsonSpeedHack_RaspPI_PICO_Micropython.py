@@ -68,8 +68,8 @@ def checksum(SpeedArray):
     return calculatedCheckSum
 
 
-uart = UART(1, 115200)                         # init with given baudrate
-uart.init(115200, bits=8, parity=None, stop=1, tx=Pin(4)) # init with given parameters
+uart = UART(0, 115200)                         # init with given baudrate
+uart.init(115200, bits=8, parity=None, stop=1, tx=Pin(0)) # init with given parameters
 
 
 kmph = int(math.trunc(TARGET_SPEED_MPH * 1.609))  #Convert mph to kmph
