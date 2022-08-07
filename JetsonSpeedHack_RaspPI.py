@@ -24,8 +24,9 @@ Jetson Bolt (Non-Pro) model.
 4) Enter a value for TARGET_SPEED_MPH: 3 mph to 19 mph.
 5) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pin:
 
+   PI PIN 6 (Ground)        | --connect to--> | BLACK Wire on Jetson Bolt Pro
    PI PIN 8 GPIO 14 (TXD)   | --connect to--> | GREY Wire on Jetson Bolt Pro
-   PI PIN 6 (Ground)        | --connect to--> | GREY Wire on Jetson Bolt Pro
+   
 
 6) Connect 36v battery and power the Jetson Bolt Pro ON
 7) Run the program sudo python3 JetsonSpeedHack_RaspPI.py
