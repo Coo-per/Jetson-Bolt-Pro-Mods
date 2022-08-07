@@ -25,9 +25,9 @@ Jetson Bolt (Non-Pro) model.
 7) Name it boot.py so this runs when it is plugged into the Jetson
 8) With the Jetson Bolt Pro OFF, and recommended 36v battery disconnected - Connect the following pin:
 
-   PICO Pin 0          | --connect to--> | BLACK Wire on Jetson Bolt Pro
-   PICO PIN 6          | --connect to--> | GREY Wire on Jetson Bolt Pro
-   PICO Pin 39         | --connect to--> | ORANGE Wire on Jetson Bolt Pro
+   PICO Pin 3 (Ground)       | --connect to--> | BLACK Wire on Jetson Bolt Pro
+   PICO PIN 6  (GP 4)        | --connect to--> | GREY Wire on Jetson Bolt Pro
+   PICO Pin 39 (VSYS )       | --connect to--> | ORANGE Wire on Jetson Bolt Pro
 
 9) Connect 36v battery and power the Jetson Bolt Pro ON
 10) The headlight will flash twice indicating Speed hack is complete.
