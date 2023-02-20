@@ -74,8 +74,6 @@ void setup()
   // set the data rate for the SoftwareSerial port
   mySerial.begin(115200);
 
-  delay(200); // Wait for Jetson controller to boot
-
   if (TARGET_SPEED_MPH < 3)             // Only accept values higher than 3
     kmph = 3;
   if (kmph > 0xff && AGREE_TO_TERMS)    // Don't allow setting higher than 0xff (255)
@@ -87,25 +85,22 @@ void setup()
     
   int SizeOfArray = sizeof(bA) / sizeof(bA[0]);
   bA[4] = checkSum(bA, SizeOfArray);  //Calculate and add the checksum to byte array
-  
-  for(int i = 0; i < SizeOfArray; i++)
-  {
-    //Write bytes serially to pin 3. This should be connected to the GREY wire of the Jetson Bolt Pro
-    mySerial.write(bA[i]);
-  }
 
   //Flash the headlights twice to confirm speed programming complete
-  delay(200);
-  for(int i = 0; i < SizeOfArray; i++)
+  delay(500); // Wait for Jetson controller to boot
+  for(int i = 0; i < SizeOfArray; i++) // Headlights on
     mySerial.write(headlightsOn[i]);
   delay(500);
-  for(int i = 0; i < SizeOfArray; i++)
+  for(int i = 0; i < SizeOfArray; i++) // Headlights off
     mySerial.write(headlightsOff[i]);
-  delay(500);
-  for(int i = 0; i < SizeOfArray; i++)
+  delay(250);
+  for(int i = 0; i < SizeOfArray; i++) //Write bytes serially to pin 3. This should be connected to the GREY wire of the Jetson Bolt Pro
+    mySerial.write(bA[i]);
+  delay(250);
+  for(int i = 0; i < SizeOfArray; i++) // Headlights on
     mySerial.write(headlightsOn[i]);
   delay(500);
-  for(int i = 0; i < SizeOfArray; i++)
+  for(int i = 0; i < SizeOfArray; i++) // Headlights off
     mySerial.write(headlightsOff[i]);
 
 }
