@@ -102,6 +102,13 @@ void setup()
   delay(500);
   for(int i = 0; i < SizeOfArray; i++) // Headlights off
     mySerial.write(headlightsOff[i]);
+  delay(500);
+
+  // *** UNTESTED! TEST AT YOUR OWN RISK. ***
+  // Zero Start ON/OFF: (Uncomment one of the below)
+  //mySerial.write({0xaa, 0x12, 0x06, 0x00, 0xbe, 0xbb}); // Zero Start ON ?
+  //mySerial.write({0xaa, 0x12, 0x06, 0x01, 0xbf, 0xbb}); // Zero Start OFF ?
+  // ****************************************
 
 }
 
@@ -116,3 +123,4 @@ void loop()
 {
   
 }
+
