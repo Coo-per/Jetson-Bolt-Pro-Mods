@@ -30,7 +30,7 @@
  * 
  * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  */
-#define TARGET_SPEED_MPH 19
+#define TARGET_SPEED_MPH 21
 
 /*
  * @@@@@@@@@@@@@@ TO INCREASE ABOVE 19 MPH, PLEASE READ ALL OF THE BELOW @@@@@@@@@@@@@@
